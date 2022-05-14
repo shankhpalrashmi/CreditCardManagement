@@ -1,0 +1,71 @@
+<apex:page controller="BillsMgmtCtr" sidebar="false">
+
+    <center>
+        <div style="font-size:30px; color: darkblue; font-weight:bold; border: 5px solid darkgreen; padding: 5px; background-color: lightgreen;">
+            WELCOME TO BILLS MANAGEMENT PAGE
+        </div>
+    </center>
+
+    <br></br>
+
+    
+    <apex:form >
+        <apex:outputPanel rendered="{!readMode}">
+            <apex:pageBlock title="All Bills" >
+                <apex:pageBlockTable value="{!wrappedBills}" var="bill">
+                    <apex:column headerValue="Select">
+                        <apex:inputCheckbox value="{!bill.selectBox}"></apex:inputCheckbox>
+                    </apex:column>
+                    <apex:column value="{!bill.billRecord.Name}"></apex:column>
+                    <apex:column value="{!bill.billRecord.Credit_Card_Customer__c}"></apex:column>
+                    <apex:column value="{!bill.billRecord.Credit_Card__c}"></apex:column>
+                    <apex:column value="{!bill.billRecord.Start_Date__c}"></apex:column>
+                    <apex:column value="{!bill.billRecord.End_Date__c}"></apex:column>
+                    <apex:column value="{!bill.billRecord.Cash_Withdrawal__c}"></apex:column>
+                    <apex:column value="{!bill.billRecord.Card_Swiped__c}"></apex:column>
+                    <apex:column value="{!bill.billRecord.Active__c}"></apex:column>
+                    <apex:column value="{!bill.billRecord.Total_Bill__c}"></apex:column>
+                    <apex:column value="{!bill.billRecord.Comments__c}"></apex:column>
+                </apex:pageBlockTable> 
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Edit" action="{!displayEditMode}"></apex:commandButton>
+                    <apex:commandButton value="Delete" action="{!deleteBills}"></apex:commandButton>
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel rendered="{!editMode}">
+            <apex:pageBlock title="Edit Bills" >
+                <apex:pageBlockTable value="{!bills}" var="bill">
+                    <apex:column value="{!bill.Name}"></apex:column>
+                    <apex:column value="{!bill.Credit_Card_Customer__c}"></apex:column>
+                    <apex:column value="{!bill.Credit_Card__c}"></apex:column>
+                    <apex:column headerValue="Start Date">
+                        <apex:inputField value="{!bill.Start_Date__c}"></apex:inputField>
+                    </apex:column>
+                    <apex:column headerValue="End Date">
+                        <apex:inputField value="{!bill.End_Date__c}"></apex:inputField>
+                    </apex:column>
+                    <apex:column headerValue="Cash Withdrawn">
+                        <apex:inputField value="{!bill.Cash_Withdrawal__c}"></apex:inputField>
+                    </apex:column>
+                    <apex:column headerValue="No. of Times Card Swiped">
+                        <apex:inputField value="{!bill.Card_Swiped__c}"></apex:inputField>
+                    </apex:column>
+                    <apex:column headerValue="Active">
+                        <apex:inputField value="{!bill.Active__c}"></apex:inputField>
+                    </apex:column>
+                    <apex:column value="{!bill.Total_Bill__c}"></apex:column>
+                    <apex:column headerValue="Comments">
+                        <apex:inputField value="{!bill.Comments__c}"></apex:inputField>
+                    </apex:column>
+                </apex:pageBlockTable> 
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Save" action="{!saveBills}"></apex:commandButton>
+                    <apex:commandButton value="Cancel" action="{!displayReadMode}"></apex:commandButton>
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+    
+</apex:page>

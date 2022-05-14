@@ -1,0 +1,66 @@
+<apex:page sidebar="false" controller="BillCreateCtr">
+        <center>
+            <div style="font-size:48px; color:blue; font-weight:bold; border:5px solid darkgreen; padding:20px; background-color:lightgreen;">
+                WELCOME TO VISUALFORCE PROGRAMMING!!!!!
+            </div>
+        </center>
+        
+        <br>
+        </br>
+	
+    <apex:pageMessages >
+
+    </apex:pageMessages>
+ 
+	<apex:form >
+        <apex:outputPanel rendered="{!editMode}">
+            <apex:pageBlock title="Create a Bill">
+                <apex:pageBlockSection title="Information">
+                    <apex:inputField value="{!billRecord.Credit_Card_Customer__c}"></apex:inputField>
+                    <apex:inputField value="{!billRecord.Credit_Card__c}"></apex:inputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Bill Dates and Active">
+                    <apex:inputField value="{!billRecord.Start_Date__c}"></apex:inputField>
+                    <apex:inputField value="{!billRecord.End_Date__c}"></apex:inputField>
+                    <apex:inputField value="{!billRecord.Active__c}"></apex:inputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Financials">
+                    <apex:inputField value="{!billRecord.Cash_Withdrawal__c}"></apex:inputField>
+                    <apex:inputField value="{!billRecord.Card_Swiped__c}"></apex:inputField>
+                    <apex:inputField value="{!billRecord.Total_Bill__c}"></apex:inputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="More Details">
+                    <apex:inputField value="{!billRecord.Comments__c}"></apex:inputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Save" action="{!saveBill}"></apex:commandButton>
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:outputPanel>
+
+        <apex:outputPanel rendered="{!readMode}">
+            <apex:pageBlock title="Create a Bill">
+                <apex:pageBlockSection title="Information">
+                    <apex:outputField value="{!billRecord.Credit_Card_Customer__c}"></apex:outputField>
+                    <apex:outputField value="{!billRecord.Credit_Card__c}"></apex:outputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Bill Dates and Active">
+                    <apex:outputField value="{!billRecord.Start_Date__c}"></apex:outputField>
+                    <apex:outputField value="{!billRecord.End_Date__c}"></apex:outputField>
+                    <apex:outputField value="{!billRecord.Active__c}"></apex:outputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Financials">
+                    <apex:outputField value="{!billRecord.Cash_Withdrawal__c}"></apex:outputField>
+                    <apex:outputField value="{!billRecord.Card_Swiped__c}"></apex:outputField>
+                    <apex:outputField value="{!billRecord.Total_Bill__c}"></apex:outputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="More Details">
+                    <apex:outputField value="{!billRecord.Comments__c}"></apex:outputField>
+                </apex:pageBlockSection>
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Cancel"></apex:commandButton>
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:outputPanel>
+	</apex:form>  
+</apex:page>
